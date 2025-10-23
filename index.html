@@ -147,18 +147,13 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
- @media (max-width: 768px) {
-  .section { padding: 40px 0; }
-  .section-title { font-size: 2rem; }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .sticky-cta { right: 16px; bottom: 16px; }
-
+@media (max-width: 768px) {
   #mainNav {
     flex-direction: column;
     overflow: hidden;
-    max-height: 0;
+    height: 0;
     opacity: 0;
-    transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+    transition: height 0.3s ease, opacity 0.3s ease;
     position: absolute;
     top: 80px;
     left: 0;
@@ -170,7 +165,6 @@
     display: flex;
   }
   #mainNav.open {
-    max-height: 500px; /* or adjust higher if needed */
     opacity: 1;
     padding: 24px 0;
   }
@@ -649,13 +643,33 @@ function handleSubmit(e) {
 <script>
 const menuBtn = document.getElementById('menuToggle');
 const navBar = document.getElementById('mainNav');
+
 menuBtn.addEventListener('click', () => {
-  navBar.classList.toggle('open');
+  if (navBar.classList.contains('open')) {
+    // Animate closing
+    navBar.style.height = navBar.scrollHeight + 'px'; // set current height
+    // Need to trigger a reflow to make the transition work
+    navBar.offsetHeight;
+    navBar.style.height = '0';
+    navBar.style.opacity = '0';
+    navBar.classList.remove('open');
+  } else {
+    // Open menu
+    navBar.classList.add('open');
+    navBar.style.height = navBar.scrollHeight + 'px';
+    navBar.style.opacity = '1';
+    navBar.addEventListener('transitionend', function handler() {
+      navBar.style.height = 'auto'; // after transition, reset height to auto
+      navBar.removeEventListener('transitionend', handler);
+    });
+  }
 });
+
 </script>
 
 </body>
 </html>
+
 
 
 
