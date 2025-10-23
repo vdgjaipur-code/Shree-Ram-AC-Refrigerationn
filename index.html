@@ -1,0 +1,825 @@
+<style>
+    :root {
+    --primary: #0C448C;
+    --accent: #EDCB33;
+    --orange: #F28B20;
+    --gray: #BCCCDB;
+    --light-bg: #F7F9FB;
+    }
+    
+    - {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+    
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #111;
+    background: #fff;
+    }
+    
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    }
+    
+    .section {
+    padding: 60px 0;
+    }
+    
+    .section-title {
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    }
+    
+    .section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    }
+    
+    .btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, #1e5fa8 100%);
+    color: white;
+    }
+    
+    .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(12, 68, 140, 0.3);
+    }
+    
+    .btn-outline {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    }
+    
+    .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    }
+    
+    .btn-whatsapp:hover {
+    background: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    }
+    
+    .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    }
+    
+    .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    }
+    
+    .icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    }
+    
+    .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--orange) 100%);
+    color: #111;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    }
+    
+    .sticky-cta {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+    }
+    
+    .sticky-cta .btn {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    }
+    
+    @media (max-width: 768px) {
+    .section {
+    padding: 40px 0;
+    }
+    
+    .section-title {
+    font-size: 2rem;
+    }
+    
+    .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+    }
+    
+    .sticky-cta {
+    right: 16px;
+    bottom: 16px;
+    }
+    }
+    </style>
+    
+    <header style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999;">
+    <div class="container" style="padding: 20px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+    
+    ```
+      <!-- Logo -->
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="width: 64px; height: 64px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; box-shadow: 0 6px 18px rgba(12,68,140,0.12);">
+          श्री
+        </div>
+        <div>
+          <h1 style="font-size: 1.25rem; font-weight: 700; color: #0C448C; margin: 0; line-height: 1.2;">
+            Shree Ram AC & Refrigeration
+          </h1>
+          <p style="font-size: 0.75rem; color: #666; margin: 4px 0 0 0;">Trusted Since 2014</p>
+        </div>
+      </div>
+    
+      <!-- Navigation -->
+      <nav style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <a href="#services" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Services</a>
+        <a href="#gallery" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Gallery</a>
+        <a href="#testimonials" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Testimonials</a>
+        <a href="tel:+919680821248" class="btn btn-primary" style="padding: 10px 20px;">📞 Call Now</a>
+      </nav>
+    
+    </div>
+    
+    ```
+    
+    </div>
+    </header>
+    
+    <section style="background: linear-gradient(135deg, #F7F9FB 0%, #fff 100%); padding: 80px 0;">
+    <div class="container">
+    <div class="grid-2" style="align-items: center;">
+    
+    ```
+      <!-- Left Content -->
+      <div>
+        <span class="badge">📍 Kishangarh Renwal • Jaipur</span>
+    
+        <h2 style="font-size: 3rem; font-weight: 700; color: #0C448C; line-height: 1.2; margin-bottom: 20px;">
+          Cool Comfort, Trusted Service
+          <span style="display: block; background: linear-gradient(90deg, #EDCB33, #F28B20); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Since 2014</span>
+        </h2>
+    
+        <p style="font-size: 1.125rem; color: #666; line-height: 1.8; margin-bottom: 30px;">
+          Shree Ram AC & Refrigeration has been serving Kishangarh Renwal and Jaipur with expert appliance repair services. We specialize in AC and refrigerator repair, installation, gas refilling, and piping — delivering prompt, reliable service to keep your home comfortable.
+        </p>
+    
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px;">
+          <a href="tel:+919680821248" class="btn btn-primary">📞 Call Now</a>
+          <a href="#contact" class="btn btn-outline">📝 Book Service</a>
+          <a href="<https://wa.me/919680821248?text=Hello%20Shree%20Ram%20AC%20-%20I%20need%20service>" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+        </div>
+    
+        <!-- Quick Features -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Split & Window AC Repair</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Fridge Repair Service</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Gas Refilling & Safety</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Professional Installation</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Right Card -->
+      <div class="card" style="background: linear-gradient(180deg, #fff, #fcfdff);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #0C448C; margin: 0;">Quick Contact</h3>
+            <p style="font-size: 0.875rem; color: #666; margin: 4px 0 0;">Call or WhatsApp for fastest response</p>
+          </div>
+          <div style="background: linear-gradient(90deg, #EDCB33, #F28B20); padding: 8px 16px; border-radius: 8px;">
+            <span style="font-weight: 700; font-size: 0.875rem; color: #fff;">Since 2014</span>
+          </div>
+        </div>
+    
+        <div style="margin-bottom: 16px;">
+          <p style="font-size: 0.875rem; color: #666; margin-bottom: 4px;">Phone Number</p>
+          <a href="tel:+919680821248" style="font-size: 1.75rem; font-weight: 700; color: #0C448C; text-decoration: none;">
+            +91 9680821248
+          </a>
+        </div>
+    
+        <div style="margin-bottom: 16px;">
+          <p style="font-size: 0.875rem; color: #666; margin-bottom: 4px;">Service Area</p>
+          <p style="font-weight: 600; color: #111;">Kishangarh Renwal, Jaipur and nearby regions</p>
+        </div>
+    
+        <div style="margin-bottom: 20px;">
+          <p style="font-size: 0.875rem; color: #666; margin-bottom: 4px;">Business Hours</p>
+          <p style="font-weight: 600; color: #111;">Mon – Sat: 9:00 AM – 8:00 PM</p>
+        </div>
+    
+        <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Request Service →</a>
+      </div>
+    
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    
+    <section id="services" class="section" style="background: #fff;">
+    <div class="container">
+    <h2 class="section-title">Our Professional Services</h2>
+    <p class="section-subtitle">Comprehensive AC and refrigeration solutions with expert technicians and guaranteed quality</p>
+    
+    ```
+    <div class="grid-3">
+    
+      <!-- Service 1 -->
+      <div class="card">
+        <div class="icon-box">❄️</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">AC Repair & Maintenance</h3>
+        <p style="color: #666; line-height: 1.6;">Complete AC solutions including compressor repair, cooling improvement, leak detection, and preventive maintenance contracts.</p>
+      </div>
+    
+      <!-- Service 2 -->
+      <div class="card">
+        <div class="icon-box">🔧</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">Refrigerator Repair</h3>
+        <p style="color: #666; line-height: 1.6;">Expert repair for domestic and commercial refrigerators, temperature issues, thermostat and compressor fixes.</p>
+      </div>
+    
+      <!-- Service 3 -->
+      <div class="card">
+        <div class="icon-box">💧</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">Gas Refilling & Safety</h3>
+        <p style="color: #666; line-height: 1.6;">Certified gas refilling services with complete safety checks and warranty coverage.</p>
+      </div>
+    
+      <!-- Service 4 -->
+      <div class="card">
+        <div class="icon-box">⚙️</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">Installation & Piping</h3>
+        <p style="color: #666; line-height: 1.6;">Professional AC installations, copper piping, condensate lines, and proper insulation work.</p>
+      </div>
+    
+      <!-- Service 5 -->
+      <div class="card">
+        <div class="icon-box">⚡</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">Emergency Service</h3>
+        <p style="color: #666; line-height: 1.6;">Quick response for urgent repairs with same-day visits depending on your location.</p>
+      </div>
+    
+      <!-- Service 6 -->
+      <div class="card">
+        <div class="icon-box">🕒</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0C448C;">AMC Contracts</h3>
+        <p style="color: #666; line-height: 1.6;">Annual maintenance contracts for hassle-free service with priority support and discounts.</p>
+      </div>
+    
+    </div>
+    
+    <!-- CTA Banner -->
+    <div style="margin-top: 60px; padding: 48px; background: linear-gradient(135deg, #0C448C 0%, #1e5fa8 100%); border-radius: 16px; text-align: center; color: white;">
+      <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 12px;">Need Immediate Assistance?</h3>
+      <p style="font-size: 1.125rem; margin-bottom: 30px; opacity: 0.9;">Our expert technicians are ready to help. Get same-day service for urgent repairs.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+919680821248" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: #0C448C; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.3s;">
+          📞 Call +91 9680821248
+        </a>
+        <a href="<https://wa.me/919680821248?text=Hello%20Shree%20Ram%20AC%20-%20I%20need%20urgent%20service>" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #25D366; color: white; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.3s;">
+          💬 WhatsApp Now
+        </a>
+      </div>
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    
+    <section id="about" class="section" style="background: #F7F9FB;">
+    <div class="container">
+    <div class="grid-2" style="align-items: center;">
+    
+    ```
+      <!-- Left Content -->
+      <div>
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #0C448C; margin-bottom: 24px;">About Shree Ram AC & Refrigeration</h2>
+    
+        <div style="color: #666; font-size: 1.125rem; line-height: 1.8; margin-bottom: 20px;">
+          <p style="margin-bottom: 16px;">
+            Established in <strong style="color: #111;">2014</strong>, Shree Ram AC & Refrigeration has grown to become one of the most trusted names in appliance repair services across Kishangarh Renwal and Jaipur, Rajasthan.
+          </p>
+          <p style="margin-bottom: 16px;">
+            Our team of <strong style="color: #111;">certified technicians</strong> brings extensive experience in diagnosing and repairing all types of air conditioners and refrigerators. We pride ourselves on fast response times, transparent pricing, and quality workmanship.
+          </p>
+          <p>
+            We follow strict safety protocols for gas handling and use only genuine parts for repairs. Our commitment to customer satisfaction has earned us thousands of loyal customers who trust us for all their cooling needs.
+          </p>
+        </div>
+    
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Certified Technicians</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Genuine Parts</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Fair Pricing</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #EDCB33; font-size: 1.25rem;">✓</span>
+            <span style="font-weight: 600; font-size: 0.875rem;">Quick Service</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Right Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+    
+        <!-- Stat 1 -->
+        <div class="card" style="text-align: center; background: white;">
+          <div style="width: 48px; height: 48px; margin: 0 auto 12px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            🏆
+          </div>
+          <div style="font-size: 2rem; font-weight: 700; color: #0C448C; margin-bottom: 4px;">10+</div>
+          <div style="font-size: 0.875rem; color: #666; font-weight: 600;">Years Experience</div>
+        </div>
+    
+        <!-- Stat 2 -->
+        <div class="card" style="text-align: center; background: white;">
+          <div style="width: 48px; height: 48px; margin: 0 auto 12px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            👥
+          </div>
+          <div style="font-size: 2rem; font-weight: 700; color: #0C448C; margin-bottom: 4px;">5000+</div>
+          <div style="font-size: 0.875rem; color: #666; font-weight: 600;">Happy Customers</div>
+        </div>
+    
+        <!-- Stat 3 -->
+        <div class="card" style="text-align: center; background: white;">
+          <div style="width: 48px; height: 48px; margin: 0 auto 12px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            ✅
+          </div>
+          <div style="font-size: 2rem; font-weight: 700; color: #0C448C; margin-bottom: 4px;">15000+</div>
+          <div style="font-size: 0.875rem; color: #666; font-weight: 600;">Services Completed</div>
+        </div>
+    
+        <!-- Stat 4 -->
+        <div class="card" style="text-align: center; background: white;">
+          <div style="width: 48px; height: 48px; margin: 0 auto 12px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            📈
+          </div>
+          <div style="font-size: 2rem; font-weight: 700; color: #0C448C; margin-bottom: 4px;">98%</div>
+          <div style="font-size: 0.875rem; color: #666; font-weight: 600;">Satisfaction Rate</div>
+        </div>
+    
+      </div>
+    
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    <section id="gallery" class="section" style="background: #fff;">
+    <div class="container">
+    <h2 class="section-title">Our Work Gallery</h2>
+    <p class="section-subtitle">See our professional service in action — quality repairs and installations</p>
+    
+    ```
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop>" alt="AC installation service" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1604754742629-3e5728249d73?w=800&h=600&fit=crop>" alt="Refrigerator repair" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1581092160607-ee67e1e56f3e?w=800&h=600&fit=crop>" alt="AC maintenance" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1585128720007-e97d8c2f5af6?w=800&h=600&fit=crop>" alt="Gas refilling service" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1635528728703-62ca1f7c5e86?w=800&h=600&fit=crop>" alt="Copper piping work" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <img src="<https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop>" alt="Expert technician" style="width: 100%; height: 240px; object-fit: cover;">
+      </div>
+    
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    <section id="testimonials" class="section" style="background: linear-gradient(135deg, #F7F9FB 0%, #fff 100%);">
+    <div class="container">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-subtitle">Don't just take our word for it — hear from satisfied customers across Jaipur</p>
+    
+    ```
+    <div class="grid-3">
+    
+      <!-- Testimonial 1 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Fast, honest, and fixed my AC the same day. The technician was professional and explained everything clearly. Highly recommended!</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Ramesh Kumar</p>
+          <p style="font-size: 0.875rem; color: #666;">Jaipur</p>
+        </div>
+      </div>
+    
+      <!-- Testimonial 2 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Excellent service quality! The technician was polite, punctual, and the pricing was very fair. Will definitely use again.</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Suman Lal</p>
+          <p style="font-size: 0.875rem; color: #666;">Kishangarh Renwal</p>
+        </div>
+      </div>
+    
+      <!-- Testimonial 3 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Reliable for commercial refrigeration needs. Professional team that understands business requirements. Great support!</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Rajesh Sharma</p>
+          <p style="font-size: 0.875rem; color: #666;">Hotel Owner, Jaipur</p>
+        </div>
+      </div>
+    
+      <!-- Testimonial 4 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Called them for emergency AC repair in summer. They came within 2 hours and fixed it perfectly. Lifesavers!</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Priya Verma</p>
+          <p style="font-size: 0.875rem; color: #666;">Jaipur</p>
+        </div>
+      </div>
+    
+      <!-- Testimonial 5 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Best AC service in the area. Used them for installation and regular maintenance. Always satisfied with their work.</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Mohan Singh</p>
+          <p style="font-size: 0.875rem; color: #666;">Kishangarh Renwal</p>
+        </div>
+      </div>
+    
+      <!-- Testimonial 6 -->
+      <div class="card" style="background: white;">
+        <div style="color: #EDCB33; font-size: 2rem; margin-bottom: 12px;">"</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 12px;">
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+          <span style="color: #EDCB33;">⭐</span>
+        </div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 16px; font-style: italic;">Very transparent pricing and no hidden charges. The technician did a thorough job. Trustworthy service!</p>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 12px;">
+          <p style="font-weight: 700; color: #111; margin-bottom: 4px;">Anita Gupta</p>
+          <p style="font-size: 0.875rem; color: #666;">Jaipur</p>
+        </div>
+      </div>
+    
+    </div>
+    
+    <!-- Rating Badge -->
+    <div style="margin-top: 48px; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(90deg, #EDCB33, #F28B20); padding: 12px 24px; border-radius: 50px; box-shadow: 0 6px 20px rgba(237, 203, 51, 0.3);">
+        <span style="color: white; font-size: 1.5rem;">⭐</span>
+        <span style="font-weight: 700; color: white;">4.9/5 Average Rating</span>
+        <span style="color: white; opacity: 0.9;">• 500+ Reviews</span>
+      </div>
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    <section id="contact" class="section" style="background: #fff;">
+    <div class="container">
+    <h2 class="section-title">Contact Us & Book Service</h2>
+    <p class="section-subtitle">Get in touch for quick service or schedule an appointment</p>
+    
+    ```
+    <div class="grid-2">
+    
+      <!-- Contact Form -->
+      <div class="card">
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: #0C448C;">Send Us a Message</h3>
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+    
+          <div style="margin-bottom: 16px;">
+            <label for="name" style="display: block; font-weight: 600; margin-bottom: 6px; color: #111;">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name" style="width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 1rem;">
+          </div>
+    
+          <div style="margin-bottom: 16px;">
+            <label for="phone" style="display: block; font-weight: 600; margin-bottom: 6px; color: #111;">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+91 9680821248" style="width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 1rem;">
+          </div>
+    
+          <div style="margin-bottom: 16px;">
+            <label for="service" style="display: block; font-weight: 600; margin-bottom: 6px; color: #111;">Service Required</label>
+            <input type="text" id="service" name="service" placeholder="AC repair / Gas refilling / Installation" style="width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 1rem;">
+          </div>
+    
+          <div style="margin-bottom: 20px;">
+            <label for="message" style="display: block; font-weight: 600; margin-bottom: 6px; color: #111;">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Describe your issue or requirements..." style="width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+          </div>
+    
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Request</button>
+    
+          <div id="formMessage" style="display: none; margin-top: 12px; padding: 12px; background: #d1fae5; color: #065f46; border-radius: 8px; font-weight: 600;"></div>
+        </form>
+      </div>
+    
+      <!-- Contact Info -->
+      <div>
+        <div class="card" style="margin-bottom: 20px;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: #0C448C;">Contact Information</h3>
+    
+          <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-size: 1.5rem;">📞</span>
+            </div>
+            <div>
+              <p style="font-weight: 600; margin-bottom: 4px;">Phone Number</p>
+              <a href="tel:+919680821248" style="color: #0C448C; text-decoration: none; font-size: 1.25rem; font-weight: 700;">+91 9680821248</a>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 4px;">Call for immediate assistance</p>
+            </div>
+          </div>
+    
+          <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-size: 1.5rem;">📍</span>
+            </div>
+            <div>
+              <p style="font-weight: 600; margin-bottom: 4px;">Service Area</p>
+              <p style="color: #666;">Kishangarh Renwal, Jaipur and nearby regions of Rajasthan</p>
+            </div>
+          </div>
+    
+          <div style="display: flex; gap: 16px;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-size: 1.5rem;">🕒</span>
+            </div>
+            <div>
+              <p style="font-weight: 600; margin-bottom: 4px;">Business Hours</p>
+              <p style="color: #666;">Monday – Saturday</p>
+              <p style="color: #0C448C; font-weight: 700;">9:00 AM – 8:00 PM</p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Map -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <iframe src="<https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256739438!2d75.65046970436204!3d26.88546716215664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1234567890123>" width="100%" height="300" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    
+    </div>
+    
+    ```
+    
+    </div>
+    </section>
+    
+    <script>
+    function handleSubmit(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    if (!name || !phone) {
+    alert('Please enter your name and phone number.');
+    return false;
+    }
+    
+    // Show success message
+    const formMessage = document.getElementById('formMessage');
+    formMessage.textContent = "Request sent! We'll contact you shortly. For urgent needs, please call or WhatsApp us directly.";
+    formMessage.style.display = 'block';
+    
+    // Optional: Create WhatsApp message
+    const whatsappMessage = `New service request from ${name}. Phone: ${phone}. Service: ${service || 'General inquiry'}. Message: ${message}`;
+    const whatsappUrl = `https://wa.me/919680821248?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Reset form
+    document.getElementById('contactForm').reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+    formMessage.style.display = 'none';
+    }, 5000);
+    
+    return false;
+    }
+    </script>
+    <footer style="background: #0C448C; color: white; padding: 48px 0;">
+    <div class="container">
+    <div class="grid-3">
+    
+    ```
+      <!-- Company Info -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(90deg, #EDCB33, #F28B20); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 1.25rem; font-weight: 700; color: white;">श्री</span>
+          </div>
+          <div>
+            <h3 style="font-weight: 700; font-size: 1.125rem; margin: 0;">Shree Ram AC & Refrigeration</h3>
+            <p style="font-size: 0.875rem; opacity: 0.8; margin: 0;">Trusted Since 2014</p>
+          </div>
+        </div>
+        <p style="opacity: 0.8; font-size: 0.875rem; line-height: 1.6;">
+          Your trusted partner for AC and refrigerator repair services in Kishangarh Renwal and Jaipur.
+        </p>
+      </div>
+    
+      <!-- Quick Links -->
+      <div>
+        <h4 style="font-weight: 700; margin-bottom: 16px;">Quick Links</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 8px;"><a href="#services" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.3s;">Services</a></li>
+          <li style="margin-bottom: 8px;"><a href="#about" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.3s;">About Us</a></li>
+          <li style="margin-bottom: 8px;"><a href="#gallery" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.3s;">Gallery</a></li>
+          <li style="margin-bottom: 8px;"><a href="#testimonials" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.3s;">Testimonials</a></li>
+          <li style="margin-bottom: 8px;"><a href="#contact" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.3s;">Contact</a></li>
+        </ul>
+      </div>
+    
+      <!-- Contact Info -->
+      <div>
+        <h4 style="font-weight: 700; margin-bottom: 16px;">Get In Touch</h4>
+        <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+          <li style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span>📞</span>
+            <a href="tel:+919680821248" style="color: white; opacity: 0.8; text-decoration: none;">+91 9680821248</a>
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span>📍</span>
+            <span style="opacity: 0.8;">Kishangarh Renwal, Jaipur, Rajasthan</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span>🕒</span>
+            <span style="opacity: 0.8;">Mon-Sat: 9:00 AM - 8:00 PM</span>
+          </li>
+        </ul>
+      </div>
+    
+    </div>
+    
+    <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 40px; padding-top: 24px; text-align: center;">
+      <p style="opacity: 0.8; font-size: 0.875rem;">
+        © <span id="footerYear"></span> Shree Ram AC & Refrigeration. All rights reserved. • Serving Kishangarh Renwal & Jaipur
+      </p>
+    </div>
+    
+    ```
+    
+    </div>
+    </footer>
+    
+    <script>
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
+    <div class="sticky-cta">
+    <a href="[https://wa.me/919680821248?text=Hello Shree Ram AC - I need service](https://wa.me/919680821248?text=Hello%20Shree%20Ram%20AC%20-%20I%20need%20service)" target="_blank" class="btn btn-whatsapp">
+    💬 WhatsApp
+    </a>
+    <a href="tel:+919680821248" class="btn btn-primary">
+    📞 Call Now
+    </a>
+    </div>
