@@ -148,25 +148,6 @@
     50% { transform: translateY(-10px); }
   }
 /* Desktop: show nav as bar, hide mobile menu toggle */
-@media (min-width: 769px) {
-  #mainNav {
-    display: flex !important;
-    position: static;
-    height: auto !important;
-    opacity: 1 !important;
-    padding: 0 !important;
-    flex-direction: row;
-    align-items: center;
-    width: auto;
-    background: none;
-    box-shadow: none;
-  }
-  #menuToggle {
-    display: none !important;
-  }
-}
-
-/* Mobile: hide navbar by default, show hamburger */
 @media (max-width: 768px) {
   #mainNav {
     flex-direction: column;
@@ -196,6 +177,24 @@
     z-index: 1002;
   }
 }
+@media (min-width: 769px) {
+  #mainNav {
+    display: flex !important;
+    position: static !important;
+    height: auto !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  #menuToggle {
+    display: none !important;
+  }
+}
+
 
 
  
@@ -216,7 +215,7 @@
         </div>
       </div>
      <!-- Navigation -->
-<nav id="mainNav" style="gap: 12px; align-items: center; flex-wrap: wrap;">
+<nav id="mainNav">
     <a href="#services" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Services</a>
     <a href="#gallery" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Gallery</a>
     <a href="#testimonials" style="color: #0C448C; text-decoration: none; padding: 8px 12px; font-weight: 600; border-radius: 8px; transition: background 0.3s;">Testimonials</a>
@@ -710,6 +709,7 @@ document.querySelectorAll('#mainNav a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
