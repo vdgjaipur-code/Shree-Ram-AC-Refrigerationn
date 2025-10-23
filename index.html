@@ -147,6 +147,26 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+/* Desktop: show nav as bar, hide mobile menu toggle */
+@media (min-width: 769px) {
+  #mainNav {
+    display: flex !important;
+    position: static;
+    height: auto !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    background: none;
+    box-shadow: none;
+  }
+  #menuToggle {
+    display: none !important;
+  }
+}
+
+/* Mobile: hide navbar by default, show hamburger */
 @media (max-width: 768px) {
   #mainNav {
     flex-direction: column;
@@ -176,6 +196,7 @@
     z-index: 1002;
   }
 }
+
 
  
   </style>
@@ -689,6 +710,7 @@ document.querySelectorAll('#mainNav a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
