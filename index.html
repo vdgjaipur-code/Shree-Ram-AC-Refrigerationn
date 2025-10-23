@@ -644,41 +644,52 @@ function handleSubmit(e) {
 const menuBtn = document.getElementById('menuToggle');
 const navBar = document.getElementById('mainNav');
 
+function handleTransitionEndClose() {
+  navBar.classList.remove('open');
+  navBar.style.height = '';
+  navBar.removeEventListener('transitionend', handleTransitionEndClose);
+}
+
+function handleTransitionEndOpen() {
+  navBar.style.height = 'auto';
+  navBar.removeEventListener('transitionend', handleTransitionEndOpen);
+}
+
 menuBtn.addEventListener('click', () => {
   if (navBar.classList.contains('open')) {
     // Closing menu
-    navBar.style.height = navBar.scrollHeight + 'px'; // set fixed height
-    // Trigger reflow
-    navBar.offsetHeight;
-    // Animate height to 0
-    navBar.style.height = '0';
-    navBar.style.opacity = '0';
-    navBar.addEventListener('transitionend', function handler() {
-      navBar.classList.remove('open');
-      navBar.style.height = '';
-      navBar.removeEventListener('transitionend', handler);
-    });
+    navBar.style.height = navBar.scrollHeight + 'px'; // set fixed height for transition
+    navBar.offsetHeight; // force reflow
+    navBar.style.height = '0'; // animate height to zero
+    navBar.style.opacity = '0'; // fade out
+    navBar.addEventListener('transitionend', handleTransitionEndClose);
   } else {
     // Opening menu
     navBar.classList.add('open');
     navBar.style.height = '0';
     navBar.style.opacity = '0';
-    // Trigger reflow
-    navBar.offsetHeight;
-    // Animate height to scrollHeight
-    navBar.style.height = navBar.scrollHeight + 'px';
-    navBar.style.opacity = '1';
-    navBar.addEventListener('transitionend', function handler() {
-      navBar.style.height = 'auto'; // reset to auto to allow flexible height
-      navBar.removeEventListener('transitionend', handler);
-    });
+    navBar.offsetHeight; // force reflow
+    navBar.style.height = navBar.scrollHeight + 'px'; // animate to full height
+    navBar.style.opacity = '1'; // fade in
+    navBar.addEventListener('transitionend', handleTransitionEndOpen);
   }
 });
+
+// Optional: Close menu when a nav link is clicked
+document.querySelectorAll('#mainNav a').forEach(link => {
+  link.addEventListener('click', () => {
+    navBar.classList.remove('open');
+    navBar.style.height = '0';
+    navBar.style.opacity = '0';
+  });
+});
+
 
 </script>
 
 </body>
 </html>
+
 
 
 
