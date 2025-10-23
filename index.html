@@ -613,6 +613,13 @@
   </div>
 </footer>
 <script>
+
+  document.querySelectorAll('#mainNav a').forEach(link => {
+  link.addEventListener('click', () => {
+    navBar.classList.remove('open');
+  });
+});
+
 document.getElementById('footerYear').textContent = new Date().getFullYear();
 function handleSubmit(e) {
   e.preventDefault();
@@ -646,6 +653,7 @@ menuBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
