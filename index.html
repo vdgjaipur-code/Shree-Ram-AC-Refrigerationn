@@ -646,20 +646,30 @@ const navBar = document.getElementById('mainNav');
 
 menuBtn.addEventListener('click', () => {
   if (navBar.classList.contains('open')) {
-    // Animate closing
-    navBar.style.height = navBar.scrollHeight + 'px'; // set current height
-    // Need to trigger a reflow to make the transition work
+    // Closing menu
+    navBar.style.height = navBar.scrollHeight + 'px'; // set fixed height
+    // Trigger reflow
     navBar.offsetHeight;
+    // Animate height to 0
     navBar.style.height = '0';
     navBar.style.opacity = '0';
-    navBar.classList.remove('open');
+    navBar.addEventListener('transitionend', function handler() {
+      navBar.classList.remove('open');
+      navBar.style.height = '';
+      navBar.removeEventListener('transitionend', handler);
+    });
   } else {
-    // Open menu
+    // Opening menu
     navBar.classList.add('open');
+    navBar.style.height = '0';
+    navBar.style.opacity = '0';
+    // Trigger reflow
+    navBar.offsetHeight;
+    // Animate height to scrollHeight
     navBar.style.height = navBar.scrollHeight + 'px';
     navBar.style.opacity = '1';
     navBar.addEventListener('transitionend', function handler() {
-      navBar.style.height = 'auto'; // after transition, reset height to auto
+      navBar.style.height = 'auto'; // reset to auto to allow flexible height
       navBar.removeEventListener('transitionend', handler);
     });
   }
@@ -669,6 +679,7 @@ menuBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
